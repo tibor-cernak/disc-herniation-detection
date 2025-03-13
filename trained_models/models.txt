@@ -1,0 +1,10 @@
+This file will contain information about models hyperparameters of trained Models
+
+disc_herniation_detection_model_neptun1.pth:
+- model = models/vnet.py -> VnetModel
+- num_epochs = 127/200
+- batch_size = 4
+- learning_rate = 1e-4
+- patience = 5
+- criterion = nn.MSELoss()
+- optimizer = optim.Adam(model.parameters(), lr=learning_rate)
