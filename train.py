@@ -8,7 +8,7 @@ import numpy as np
 import os
 from tqdm import tqdm
 
-from models.vnet import VnetModel
+from vnet import VNetModel, AttentionVNetModel
 from dataset import Dataset
 
 
@@ -196,7 +196,7 @@ if __name__ == "__main__":
     batch_size = 1
     learning_rate = 1e-4
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    save_path = "disc_herniation_detection_model.pth"
+    save_path = "trained_models/disc_herniation_detection_model.pth"
     patience = 5
 
     dataset = Dataset(
@@ -212,7 +212,7 @@ if __name__ == "__main__":
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
-    model = VnetModel().to(device)
+    model = VNetModel().to(device)
 
     if os.path.exists(save_path):
         print(f"Loading model from {save_path}...")
