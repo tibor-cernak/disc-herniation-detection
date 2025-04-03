@@ -7,6 +7,7 @@ disc_herniation_detection_model_neptun.pth
 - optimizer = Adam
 - loss = MSELoss()
 - patience = 5
+- sigma = 1.5
 
 disc_herniation_detection_model_uran.pth
 - num_epochs = 136/200 -> AttentionVNetModel
@@ -15,3 +16,45 @@ disc_herniation_detection_model_uran.pth
 - optimizer = Adam
 - loss = MSELoss()
 - patience = 5
+- sigma = 1.5
+
+
+disc_herniation_detection_model_local.pth
+- num_epochs = 76 -> VNetModel
+- batch_size = 2
+- learning_rate = 1e-4
+- optimizer = Adam
+- loss = MSELoss()
+- patience = 5
+- sigma = 1.5
+
+disc_herniation_detection_model_uran2.pth
+- num_epochs = 134/200 -> VNetModel
+- batch_size = 4
+- learning_rate = 1e-4
+- optimizer = Adam
+- loss = MSELoss()
+- patience = 5
+- sigma = 1.5
+- log_file = loss_log_uran2.csv
+
+
+disc_herniation_detection_model_uran3.pth
+- num_epochs = 147/200 -> VNetModel
+- batch_size = 4
+- learning_rate = 1e-4
+- optimizer = Adam
+- loss = MSELoss()
+- patience = 5
+- sigma = 1
+- log_file = loss_log_uran3.csv
+
+disc_herniation_detection_model_uran4.pth
+- num_epochs = 198/200 -> VNetModel
+- batch_size = 6
+- learning_rate = 1e-4
+- optimizer = Adam
+- loss = MSELoss()
+- patience = 5
+- sigma = 1.5
+- log_file = loss_log_uran4.csv

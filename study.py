@@ -144,7 +144,7 @@ class Study:
             elif self.is_t2_stir_dicom_file(first_file):
                 series_type = MRIType.T2_STIR
             else:
-                series_type = MRIType.UNKNOWN
+                continue
 
             series_list.append(Series(self.study_uid, series_uid, files, series_type))
 
@@ -278,7 +278,7 @@ class Study:
 
 if __name__ == "__main__":
 
-    root_dir = "MR LS chrbtice"
+    root_dir = "MR chrbtice"
 
     for dirpath, dirnames, _ in os.walk(root_dir):
         if not dirnames:

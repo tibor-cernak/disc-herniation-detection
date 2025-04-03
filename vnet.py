@@ -4,7 +4,6 @@ import torch.nn.functional as F
 
 
 class ConvBlock(nn.Module):
-    """Convolutional block with two 3D convolutions, batch norm, and ReLU."""
 
     def __init__(self, in_channels, out_channels):
         super(ConvBlock, self).__init__()
@@ -22,7 +21,6 @@ class ConvBlock(nn.Module):
 
 
 class AttentionBlock(nn.Module):
-    """Attention block that refines skip connections in U-Net."""
 
     def __init__(self, f_g, f_l, f_int):
         super().__init__()
@@ -50,7 +48,6 @@ class AttentionBlock(nn.Module):
 
 
 class DownBlock(nn.Module):
-    """Downsampling block with max pooling and ConvBlock."""
 
     def __init__(self, in_channels, out_channels):
         super(DownBlock, self).__init__()
@@ -64,7 +61,6 @@ class DownBlock(nn.Module):
 
 
 class UpBlock(nn.Module):
-    """Upsampling block with optional attention."""
 
     def __init__(self, in_channels, out_channels, use_attention=False):
         super().__init__()
@@ -85,7 +81,6 @@ class UpBlock(nn.Module):
 
 
 class VNetModelBase(nn.Module):
-    """Base class for VNet models with configurable upsampling blocks."""
 
     def __init__(self, in_channels=1, out_channels=1, use_attention=False):
         super().__init__()
@@ -100,9 +95,8 @@ class VNetModelBase(nn.Module):
         self.decoder2 = UpBlock(64, 32, use_attention)
         self.decoder1 = UpBlock(32, 16, use_attention)
 
-        # Final convolution to produce a single-channel heatmap
         self.final_conv = nn.Conv3d(16, out_channels, kernel_size=1)
-        self.sigmoid = nn.Sigmoid()  # Sigmoid activation for heatmap values in [0, 1]
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
         # Encoder
@@ -125,14 +119,12 @@ class VNetModelBase(nn.Module):
 
 
 class VNetModel(VNetModelBase):
-    """Standard V-Net without attention."""
 
     def __init__(self, in_channels=1, out_channels=1):
         super().__init__(in_channels, out_channels, use_attention=False)
 
 
 class AttentionVNetModel(VNetModelBase):
-    """V-Net with attention in upsampling blocks."""
 
     def __init__(self, in_channels=1, out_channels=1):
         super().__init__(in_channels, out_channels, use_attention=True)

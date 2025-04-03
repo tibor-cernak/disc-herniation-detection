@@ -203,6 +203,6 @@ class Dataset(data.Dataset):
 
 
 if __name__ == "__main__":
-    dataset = Dataset("dataset", "annotations.json", transform=True)
-    for i in range(180, 200):
+    dataset = Dataset("train", "train_annotations.json", transform=False)
+    for i in range(0, len(dataset)):
         dataset.visualize_sample(i)

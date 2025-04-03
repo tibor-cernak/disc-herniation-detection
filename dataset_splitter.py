@@ -11,7 +11,7 @@ TRAIN_ANNOTATION_FILE = "train_annotations.json"
 TEST_ANNOTATION_FILE = "test_annotations.json"
 
 # for reproducibility
-# random.seed(4)
+random.seed(4)
 
 with open(ANNOTATION_FILE, "r") as f:
     annotations = json.load(f)
