@@ -283,4 +283,7 @@ if __name__ == "__main__":
     for dirpath, dirnames, _ in os.walk(root_dir):
         if not dirnames:
             study = Study(dirpath)
-            study.export()
+            # study.export()
+
+            for annotated_series in study.annotated_series:
+                annotated_series.visualize()
