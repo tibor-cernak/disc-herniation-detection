@@ -170,7 +170,7 @@ class Dataset(data.Dataset):
         mri_volume, heatmap = mri_volume.squeeze().numpy(), heatmap.squeeze().numpy()
         num_slices = mri_volume.shape[0]
 
-        fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+        fig, ax = plt.subplots(1, 2)
         plt.subplots_adjust(bottom=0.25)
 
         slice_idx = num_slices // 2
@@ -198,7 +198,13 @@ class Dataset(data.Dataset):
 
             fig.canvas.draw_idle()
 
+        ax[0].set_xticks([])
+        ax[0].set_yticks([])
+
+        ax[1].set_xticks([])
+        ax[1].set_yticks([])
         slider.on_changed(update)
+        plt.tight_layout()
         plt.show()
 
 
